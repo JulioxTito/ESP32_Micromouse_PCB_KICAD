@@ -1,70 +1,82 @@
 # ESP32-S3 Micromouse Robot Controller
 
-A custom 2-layer PCB designed in KiCad for an autonomous maze-solving Micromouse robot. The board handles power regulation, motor driver signals, and distance sensors using an ESP32-S3 microcontroller.
+A compact robotics breakout and control PCB designed for an autonomous maze-solving Micromouse robot[cite: 10]. The board integrates power regulation, dual distance sensor interfaces, and motor driver breakouts around an ESP32-S3 system.
 
 <p align="center">
-  <img src="Media/board_3d.png" alt="Micromouse 3D Model" width="550">
+  <img src="Media/board_3d.png" alt="3D Render" width="550">
 </p>
 
-## Overview
+## Features
 
-This board acts as the main compute and interface hub for a Micromouse robot. It steps down 5V USB power to a clean 3.3V rail for the MCU, routes dual I2C channels to front-facing distance sensors, and breaks out control lines to drive dual DC motors through an external H-bridge.
+- **ESP32-S3 Core Module**
+  - Surface-mount ESP32-S3-WROOM-1 footprint with dedicated antenna keep-out area
+  - Native USB D+/D- lines routed to GPIO 19 and 20 for firmware flashing and debugging
 
-## Hardware Features
+- **Dual I2C Distance Sensor Breakouts**
+  - Dual 4-pin headers (J3, J4) for left and right Time-of-Flight / IR obstacle sensors
+  - Integrated 4.7k pull-up resistors on SDA and SCL lines
 
-* Microcontroller: ESP32-S3-WROOM-1 module with native USB (D+/D-) on GPIO 19 and 20 for direct programming and debugging.
-* Power: USB Type-C connector with 5.1k pull-downs on CC lines for standard 5V negotiation, stepped down through an AMS1117-3.3 regulator.
-* Sensor Headers: Dedicated 4-pin headers (J3 and J4) for left and right I2C distance sensors, with onboard 4.7k pull-up resistors on SCL and SDA lines.
-* Motor Driver Header: 6-pin interface (J2) breaking out 5V, GND, two PWM speed signals, and two direction signals for dual H-bridge motor drivers.
-* Programming and Controls: Tactile switches for Reset and Boot mode selection with debounce and pull-up circuitry.
-* Mounting: Four M2.5 corner mounting holes positioned for robot chassis assembly.
+- **Dual DC Motor Driver Interface**
+  - 6-pin header (J2) providing 5V, GND, dual PWM speed channels, and direction pins for an external H-bridge
 
-## Board Layout and Design Verification
+- **USB-C Power Input & 3.3V Regulation**
+  - 16-pin USB Type-C receptacle with dual 5.1k CC pull-down resistors for standard 5V supply
+  - Onboard AMS1117-3.3 linear regulator with 10uF input/output ceramic filtering capacitors
 
-<p align="center">
-  <img src="Media/board_layout.png" alt="KiCad PCB Layout" width="550">
-</p>
+- **Hardware Control Switches**
+  - Tactile pushbuttons for RESET and BOOT mode selection with RC filtering and pull-ups
 
-* Layer stackup: 2-layer FR4, 1.6 mm thickness, 1 oz copper.
-* Ground planes: Top and bottom layers flooded with ground copper pours tied with thermal reliefs.
-* RF Keep-Out: The ESP32-S3 PCB antenna hangs off the top edge of the board with all copper and traces pulled back to prevent RF attenuation.
-* Verification: Passed KiCad DRC with 0 errors, 0 unconnected nets, and 0 schematic parity warnings.
+- **Chassis Mounting**
+  - 4x M2.5 screw mounting holes with dedicated copper clearance for robot mechanical framing
 
-## Schematic
+## Schematic & Layout
 
-The circuit is organized into three sub-blocks: USB-C power entry and LDO regulation, ESP32-S3 core control circuitry, and the sensor/actuator header interfaces.
-
-[View Full Schematic PDF](Media/esp32_micromouse_schematic.pdf)
-
+Schematic:
 <p align="center">
   <img src="Media/schematic.png" alt="Schematic" width="700">
 </p>
 
-## Key Components
+[Download Schematic PDF](Media/esp32_micromouse_schematic.pdf)
 
-| Ref | Part | Package | Description |
+PCB Layout:
+<p align="center">
+  <img src="Media/board_layout.png" alt="PCB Layout" width="550">
+</p>
+
+## Skills Demonstrated
+
+- KiCad 10 schematic capture and 2-layer PCB layout routing[cite: 8]
+- Complete Design Rule Check (DRC) verification with 0 errors and 0 parity warnings[cite: 11]
+- SMT footprint routing (ESP32-S3, USB-C, 0805 passives, SOT-223)
+- Continuous ground plane flooding and thermal relief connections
+- Functional silkscreen documentation with circuit grouping outlines and header pinouts
+- Fabrication data generation (RS-274X Gerbers, Excellon NC drill files)
+
+## Key Components & Footprints
+
+| Designator | Component | Footprint / Package | Function |
 | :--- | :--- | :--- | :--- |
 | U1 | AMS1117-3.3 | SOT-223 | 5V to 3.3V LDO regulator |
-| U2 | ESP32-S3-WROOM-1 | SMD Module | Main processor |
-| J1 | USB-C 16-pin | SMD | 5V power input and USB data |
-| J2 | 1x06 Pin Header | 2.54 mm TH | Dual H-bridge motor driver interface |
-| J3, J4 | 1x04 Pin Header | 2.54 mm TH | Left and right I2C distance sensor headers |
-| SW1, SW2 | Tactile Switch | 6x6 mm | Reset and Boot buttons |
-| R1, R2 | 5.1k Resistor | 0805 | USB-C CC termination |
-| R3, R4 | 10k Resistor | 0805 | EN and Boot pull-ups |
-| R5, R6 | 4.7k Resistor | 0805 | I2C pull-ups |
-| C1, C2 | 10uF Capacitor | 0805 | LDO input and output decoupling |
-| C3, C4 | 0.1uF / 1uF Capacitor | 0805 | Power filtering and reset debounce |
+| U2 | ESP32-S3-WROOM-1 | SMD Module | Main system microcontroller |
+| J1 | USB-C Receptacle | 16-Pin SMD | 5V power and USB data |
+| J2 | Pin Header 1x06 | 2.54 mm Pitch TH | Motor driver interface |
+| J3, J4 | Pin Header 1x04 | 2.54 mm Pitch TH | Left and right I2C distance sensors |
+| SW1, SW2 | Tactile Switch | 6x6 mm Pushbutton | RESET and BOOT triggers |
+| R1, R2 | 5.1k Resistor | 0805 SMD | USB-C CC line pull-downs |
+| R3, R4 | 10k Resistor | 0805 SMD | EN and BOOT pull-up network |
+| R5, R6 | 4.7k Resistor | 0805 SMD | I2C SDA and SCL bus pull-ups |
+| C1, C2 | 10uF Capacitor | 0805 SMD | LDO input and output decoupling |
+| C3, C4 | 0.1uF / 1uF Capacitor | 0805 SMD | Power rail filtering and reset debounce |
 
-## Repository Structure
+## File Formats
 
-* Hardware_Files: KiCad project file (.kicad_pro), schematic (.kicad_sch), and PCB layout (.kicad_pcb).
-* Gerbers_Micromouse_v1.0.zip: Production gerbers and drill files ready for PCB manufacturing.
-* 3D Models: Component 3D step and wrl files.
-* Media: Screenshots, renders, and schematic PDF for documentation.
+- Hardware_Files/ contains editable KiCad project, schematic, and board layout files[cite: 12]
+- Gerbers_Micromouse_v1.0.zip contains generated fabrication Gerber and drill files for PCB manufacturing
+- 3D Models/ contains component 3D step and wrl models used for rendering[cite: 9]
+- Media/ contains board layouts, schematic exports, and 3D renders[cite: 12]
 
 ## Author
 
 Julio Tito  
 Rutgers University – New Brunswick  
-Electrical and Computer Engineering
+B.S. in Electrical and Computer Engineering
