@@ -1,6 +1,6 @@
 # ESP32-S3 Micromouse Robot Controller
 
-A compact robotics breakout and control PCB designed for an autonomous maze-solving Micromouse robot[cite: 10]. The board integrates power regulation, dual distance sensor interfaces, and motor driver breakouts around an ESP32-S3 system.
+A compact robotics breakout and control PCB designed for an autonomous maze-solving Micromouse robot. The board integrates power regulation, dual distance sensor interfaces, and motor driver breakouts around an ESP32-S3 system.
 
 <p align="center">
   <img src="Media/board_3d.png" alt="3D Render" width="550">
@@ -45,8 +45,8 @@ PCB Layout:
 
 ## Skills Demonstrated
 
-- KiCad 10 schematic capture and 2-layer PCB layout routing[cite: 8]
-- Complete Design Rule Check (DRC) verification with 0 errors and 0 parity warnings[cite: 11]
+- KiCad 10 schematic capture and 2-layer PCB layout routing
+- Complete Design Rule Check (DRC) verification with 0 errors and 0 parity warnings
 - SMT footprint routing (ESP32-S3, USB-C, 0805 passives, SOT-223)
 - Continuous ground plane flooding and thermal relief connections
 - Functional silkscreen documentation with circuit grouping outlines and header pinouts
@@ -70,10 +70,10 @@ PCB Layout:
 
 ## File Formats
 
-- Hardware_Files/ contains editable KiCad project, schematic, and board layout files[cite: 12]
+- Hardware_Files/ contains editable KiCad project, schematic, and board layout files
 - Gerbers_Micromouse_v1.0.zip contains generated fabrication Gerber and drill files for PCB manufacturing
-- 3D Models/ contains component 3D step and wrl models used for rendering[cite: 9]
-- Media/ contains board layouts, schematic exports, and 3D renders[cite: 12]
+- 3D Models/ contains component 3D step and wrl models used for rendering
+- Media/ contains board layouts, schematic exports, and 3D renders
 
 ## Author
 
