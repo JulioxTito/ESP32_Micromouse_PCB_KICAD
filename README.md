@@ -1,4 +1,11 @@
 # ESP32-S3 Micromouse Robot Controller
+<p align="left">
+  <img src="https://img.shields.io/badge/EDA-KiCad_10-31469a?style=for-the-badge&logo=kicad&logoColor=white" alt="KiCad">
+  <img src="https://img.shields.io/badge/MCU-ESP32--S3-e7352c?style=for-the-badge&logo=espressif&logoColor=white" alt="ESP32-S3">
+  <img src="https://img.shields.io/badge/PCB-2--Layer_FR4-2e7d32?style=for-the-badge" alt="PCB Stackup">
+  <img src="https://img.shields.io/badge/DRC-Zero_Errors-success?style=for-the-badge" alt="DRC Status">
+  <img src="https://img.shields.io/badge/Fabrication-Gerbers_Ready-blue?style=for-the-badge" alt="Fabrication Status">
+</p>
 
 A compact robotics breakout and control PCB designed for an autonomous maze-solving Micromouse robot. The board integrates power regulation, dual distance sensor interfaces, and motor driver breakouts around an ESP32-S3 system.
 
