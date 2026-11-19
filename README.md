@@ -13,6 +13,10 @@ A compact robotics breakout and control PCB designed for an autonomous maze-solv
   <img src="Media/board_3d.png" alt="3D Render" width="550">
 </p>
 
+> [!NOTE]
+> **Looking for high-speed multi-layer PCB design?**  
+> Check out my [**4-Layer High-Speed CM4 Carrier Board**](https://github.com/JulioxTito/CM4_highspeed_Carrier_PCB) — featuring PCIe Gen 2.0 (5.0 Gbps), M.2 Key-M NVMe storage, 4K HDMI, and 4-layer controlled-impedance differential routing.
+
 ## Features
 
 - **ESP32-S3 Core Module**
